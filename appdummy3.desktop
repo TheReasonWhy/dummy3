@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=VK Знакомства
+Comment=Простой пример приложения на C++
+Exec=/usr/bin/appdummy3
+Icon=/usr/share/icons/hicolor/256x256/apps/dummy3.png
+Terminal=false
+Categories=Utility;

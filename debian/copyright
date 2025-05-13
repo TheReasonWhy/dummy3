@@ -1,0 +1,8 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: dummy3
+Source: https://github.com/TheReasonWhy/dummy3
+
+Files: *
+Copyright: 2023 Your Name <youremail@example.com>
+License: MIT
+

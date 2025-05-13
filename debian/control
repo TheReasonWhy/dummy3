@@ -1,0 +1,15 @@
+Source: dummy3
+Section: utils
+Priority: optional
+Maintainer: Ваше Имя <ваш.email@example.com>
+Build-Depends: debhelper (= 13), cmake, build-essential
+Standards-Version: 4.5.0
+Homepage: http://example.com
+
+Package: dummy3
+Version: 4.5-1
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, build-essential, cmake
+Description: Простой пример приложения на C++
+ пакет зависит от build-essential и cmake
+

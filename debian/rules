@@ -1,0 +1,35 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@ --with cmake
+
+# Добавьте вызов проверки зависимостей перед сборкой
+override_dh_auto_configure:
+	mkdir -p build
+	cd build && \
+	cmake .. -DQt6_DIR=/usr/lib/x86_64-linux-gnu/cmake/Qt6
+	
+# Обязательная сборка проекта
+override_dh_auto_build:
+	cd build && cmake --build .
+
+# Добавьте вызов проверки зависимостей перед сборкой
+build: check_dependencies
+
+install: build
+	dh $@
+# Создаем директории для исполняемого файла
+	mkdir -p debian/dummy3/usr/bin
+# Копируем собранный исполняемый файл
+	install -m755 build/appdummy3 debian/dummy3/usr/bin/
+# Создаем символическую ссылку dummy1 на appdummy1
+	ln -sf /usr/bin/appdummy3 debian/dummy3/usr/bin/dummy3
+	mkdir -p $(CURDIR)/debian/dummy3/usr/share/applications
+	mkdir -p $(CURDIR)/debian/dummy3/usr/share/icons/hicolor/256x256/apps
+	install -Dm644 appdummy3.desktop $(CURDIR)/debian/dummy3/usr/share/applications/
+	install -Dm644 dummy3.png $(CURDIR)/debian/dummy3/usr/share/icons/hicolor/256x256/apps/
+
+check_dependencies:
+	@echo "Проверка и установка необходимых зависимостей..."
+	@dpkg -s debhelper cmake || sudo apt-get install -y debhelper cmake qt6-base-dev qt6-declarative-dev qt6-wayland
+
