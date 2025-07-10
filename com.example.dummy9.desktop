@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=VK Мессенджер
+Comment=Простой пример приложения на C++
+Exec=flatpak run com.example.dummy9
+Icon=/usr/share/icons/hicolor/256x256/apps/dummy9.png
+Terminal=false
+Categories=Utility;
